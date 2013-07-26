@@ -22,6 +22,10 @@ public class Graph {
 		return list.get(u);
 	}
 	
+	public int getNodeNum(){
+		return list.size();
+	}
+	
 	/**
 	 * @param args
 	 */
