@@ -34,7 +34,7 @@ public class Hanoi {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		hanoi(6);
+		hanoi(2);
 	}
 
 }

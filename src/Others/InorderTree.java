@@ -5,7 +5,7 @@ import java.util.Stack;
 public class InorderTree {
 	public static void inorderTree(TreeNode root){
 		//version 1
-		/*Stack<TreeNode> stack = new Stack<TreeNode>();
+		Stack<TreeNode> stack = new Stack<TreeNode>();
 		stack.push(root);
 		while(!stack.isEmpty()){
 			TreeNode top = stack.peek();
@@ -19,17 +19,17 @@ public class InorderTree {
 			if(top.right != null){
 				stack.push(top.right);
 			}else{
-				if(!stack.isEmpty()){
+				while(!stack.isEmpty() && top.right == null){
 					top = stack.pop();
 					System.out.println(top.v);
-					if(top.right != null)
-						stack.push(top.right);
 				}
+				if(top.right != null)
+					stack.push(top.right);
 			}
-		}*/
+		}
 		
 		//version 2
-		Stack<TreeNode> stack = new Stack<TreeNode>();
+		/*Stack<TreeNode> stack = new Stack<TreeNode>();
 		TreeNode cur = root;
 		while(!stack.empty() || cur != null){
 			while(cur != null){
@@ -41,7 +41,25 @@ public class InorderTree {
 			stack.pop();
 			System.out.println(top.v);
 			cur = top.right;
-		}
+		}*/
+		
+		//version 3
+		/*Stack<TreeNode> stack = new Stack<TreeNode>();
+		stack.push(root);
+		TreeNode cur = root;
+		while(!stack.empty() || cur != null){
+			while(cur != null && cur.left != null){
+				stack.push(cur.left);
+				cur = cur.left;
+			}
+			
+			TreeNode top = stack.peek();
+			stack.pop();
+			System.out.println(top.v);
+			cur = top.right;
+			if(cur != null)
+				stack.push(cur);
+		}*/
 	}
 	
 	/**
