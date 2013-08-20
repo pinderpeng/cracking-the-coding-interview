@@ -17,6 +17,7 @@ public class RobotPathsNum {
 		return getRobotPathsNum(i+1, j, N) + getRobotPathsNum(i, j+1, N);
 	}
 	
+	//有路径版本1
 	public static void getRobotPaths(int N){
 		 ArrayList<Point> cur = new ArrayList<Point>();
 		 cur.add(new Point(0, 0));
@@ -29,6 +30,7 @@ public class RobotPathsNum {
 				System.out.print("(" + p.x + ", " + p.y + ")");
 			}
 			System.out.println();
+			return;
 		}
 		
 		if(i+1 < N){
@@ -42,6 +44,32 @@ public class RobotPathsNum {
 			cur.remove(cur.size()-1);
 		}
 	}
+	
+	//有路径版本2
+	public static void getRobotPaths2(int N){
+		 ArrayList<Point> cur = new ArrayList<Point>();
+		getRobotPathsHelper2(0, 0, cur, N);
+	}
+	
+	public static void getRobotPathsHelper2(int i, int j, ArrayList<Point> cur, int N){
+		if(i >= N || j >= N){
+			return;
+		}
+		
+		cur.add(new Point(i, j));
+		if(i == N-1 && j == N-1){
+			for(Point p : cur){
+				System.out.print("(" + p.x + ", " + p.y + ")");
+			}
+			System.out.println();			
+		}else{
+			getRobotPathsHelper2(i+1, j, cur, N);		
+			getRobotPathsHelper2(i, j+1, cur, N);	
+		}
+		cur.remove(cur.size()-1);
+	}
+	
+	
 	
 	//DP版本
 	public static int getRobotPathsNum2(int N){
@@ -64,7 +92,9 @@ public class RobotPathsNum {
 		// TODO Auto-generated method stub
 		System.out.println(getRobotPathsNum(0, 0, 3));
 		System.out.println(getRobotPathsNum2(3));
-		getRobotPaths(3);
+		//getRobotPaths(3);
+		//getRobotPaths(3);
+		getRobotPaths2(3);
 	}
 
 }
